@@ -1,1 +1,0 @@
-Versión inicial del proyecto SOSHEMAIN
