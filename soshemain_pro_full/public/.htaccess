@@ -1,0 +1,16 @@
+Options -Indexes
+<FilesMatch "\.(php|php5|php7)$">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_headers.c>
+Header set X-Frame-Options "SAMEORIGIN"
+Header set X-Content-Type-Options "nosniff"
+Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+<Directory "uploads">
+    <FilesMatch "\.(php|php5|php7)$">
+        Deny from all
+    </FilesMatch>
+</Directory>
