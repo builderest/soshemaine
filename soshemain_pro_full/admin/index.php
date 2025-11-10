@@ -128,6 +128,21 @@ switch ($view) {
         $data['settings'] = $GLOBALS['settings'];
         $data['themes'] = Theme::available();
         break;
+    case 'profile':
+        $title = 'Profile';
+        $controller = new ProfileController();
+        $currentUser = Auth::user();
+        if (is_post() && Csrf::verify()) {
+            $result = $controller->updatePassword($_POST, $currentUser ?? []);
+            if ($result['success']) {
+                flash('admin_success', $result['message']);
+            } else {
+                flash('admin_error', $result['message']);
+            }
+            redirect('admin/index.php?view=profile');
+        }
+        $data['user'] = $currentUser;
+        break;
     case 'media':
         $title = 'Media Library';
         $controller = new MediaManagerController();
@@ -190,6 +205,7 @@ $adminBsTheme = $adminTheme === 'dark' ? 'dark' : 'light';
                 <li class="nav-item"><a class="nav-link<?php echo $view === 'media' ? ' active' : ''; ?>" href="?view=media">Media</a></li>
                 <li class="nav-item"><a class="nav-link<?php echo $view === 'contacts' ? ' active' : ''; ?>" href="?view=contacts">Contacts</a></li>
                 <li class="nav-item"><a class="nav-link<?php echo $view === 'settings' ? ' active' : ''; ?>" href="?view=settings">Settings</a></li>
+                <li class="nav-item"><a class="nav-link<?php echo $view === 'profile' ? ' active' : ''; ?>" href="?view=profile">Profile</a></li>
             </ul>
             <div class="d-flex align-items-center gap-3">
                 <span class="text-muted small"><i class="bi bi-person-circle me-1"></i><?php echo e($user['name'] ?? $user['email'] ?? 'Admin'); ?></span>

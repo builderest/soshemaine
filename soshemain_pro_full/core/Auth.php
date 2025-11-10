@@ -51,5 +51,22 @@ class Auth
         unset($_SESSION[self::SESSION_KEY], $_SESSION['soshemaine_user']);
         session_regenerate_id(true);
     }
+
+    public static function refreshUser(int $id): void
+    {
+        $userModel = new UserModel();
+        $user = $userModel->find($id);
+
+        if (session_status() !== PHP_SESSION_ACTIVE) {
+            session_start();
+        }
+
+        if ($user) {
+            $_SESSION[self::SESSION_KEY] = (int) $user['id'];
+            $_SESSION['soshemaine_user'] = $user;
+        } else {
+            self::logout();
+        }
+    }
 }
 

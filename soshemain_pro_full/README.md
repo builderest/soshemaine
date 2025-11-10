@@ -19,7 +19,8 @@ A fully CMS-driven marketing and commerce experience built for Hostinger shared 
 5. Set folder permissions so `uploads/` is writable by PHP for media uploads.
 6. Visit `/admin/login.php` and sign in with the default admin account:
    - Email: `admin@soshemaine.net`
-   - Password: `password` (change immediately in the database or add a profile form)
+   - Password: `@Sm4766102`
+   - Update the password anytime in Admin → Profile.
 7. Configure SMTP, Stripe, PayPal, and branding options in Admin → Settings. Regenerate `sitemap.xml` as needed.
 
 ## Tech stack

@@ -172,7 +172,7 @@ CREATE TABLE audit_log (
 
 -- Seed data
 INSERT INTO users (name, email, password, role) VALUES
-('Site Admin', 'admin@soshemaine.net', '$2y$12$B1ZaM9EXeZ66muV8izfgOu3QJbMkqN1ZN7lDM6hpk4/nNytQQoewW', 'admin');
+('Site Admin', 'admin@soshemaine.net', '$2y$12$H7POlubzBoCmTsi5DYEfwu15fLSDhDb2cpPCGWmP1E3HhV4REeo5O', 'admin');
 
 INSERT INTO settings (`key`, `value`) VALUES
 ('company_name', 'SOSHEMAIN'),
