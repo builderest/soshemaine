@@ -5,7 +5,8 @@ A fully CMS-driven marketing and commerce experience built for Hostinger shared 
 ## Features
 - MVC architecture with PDO models, controllers, and Bootstrap-based views
 - Admin dashboard with authentication, CRUD for pages, posts, services, products, menus, media, and global settings
-- Theme system powered by CSS design tokens (light, dark, ocean, violet) with visitor toggle + default option in settings
+- Theme system powered by CSS design tokens (dark pink default, plus light/ocean/violet palettes) with visitor toggle + default option in settings
+- Portfolio module with admin-managed projects, galleries, video embeds, and featured highlights on the homepage
 - PWA essentials: manifest, service worker, responsive layout, accessibility helpers
 - Contact inbox with CSRF protection, rate limiting, and SMTP-ready email placeholders
 - Demo commerce workflow with Stripe Checkout and PayPal sandbox hooks (no card storage)

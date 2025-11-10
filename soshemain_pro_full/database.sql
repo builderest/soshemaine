@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS orders;
 DROP TABLE IF EXISTS contacts;
 DROP TABLE IF EXISTS media;
 DROP TABLE IF EXISTS products;
+DROP TABLE IF EXISTS portfolio;
 DROP TABLE IF EXISTS services;
 DROP TABLE IF EXISTS testimonials;
 DROP TABLE IF EXISTS stats;
@@ -99,6 +100,22 @@ CREATE TABLE products (
   updated_at TIMESTAMP NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE portfolio (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(200) NOT NULL,
+  slug VARCHAR(200) UNIQUE,
+  category VARCHAR(100),
+  description MEDIUMTEXT,
+  thumbnail VARCHAR(255),
+  images JSON,
+  video_url VARCHAR(255),
+  client VARCHAR(150),
+  link VARCHAR(255),
+  featured TINYINT(1) DEFAULT 0,
+  status ENUM('draft','published') DEFAULT 'published',
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 CREATE TABLE media (
   id INT AUTO_INCREMENT PRIMARY KEY,
   filename VARCHAR(255) NOT NULL,
@@ -162,14 +179,14 @@ INSERT INTO settings (`key`, `value`) VALUES
 ('company_email', 'hello@soshemaine.net'),
 ('company_phone', '+1 207 555 0199'),
 ('company_address', '123 Innovation Way, Portland, ME'),
-('theme_default', 'light'),
-('brand_colors', '{"primary":"#0052ff","secondary":"#0f172a"}'),
+('theme_default', 'dark'),
+('brand_colors', '{"primary":"#e91e63","secondary":"#0b0f19"}'),
 ('font_primary', 'Inter'),
 ('meta_description', 'SOSHEMAIN partners with leaders to deliver modern digital products and services.'),
 ('social_links', '[{"platform":"LinkedIn","url":"https://linkedin.com/company/soshemaine"},{"platform":"Twitter","url":"https://twitter.com/soshemaine"}]');
 
 INSERT INTO menus (name, location, items) VALUES
-('Primary navigation', 'primary', '[{"label":"Home","url":"/index.php"},{"label":"About","url":"/about.php"},{"label":"Services","url":"/services.php"},{"label":"Products","url":"/products.php"},{"label":"Blog","url":"/blog.php"},{"label":"Contact","url":"/contact.php"}]'),
+('Primary navigation', 'primary', '[{"label":"Home","url":"/index.php"},{"label":"About","url":"/about.php"},{"label":"Services","url":"/services.php"},{"label":"Portfolio","url":"/portfolio.php"},{"label":"Products","url":"/products.php"},{"label":"Blog","url":"/blog.php"},{"label":"Contact","url":"/contact.php"}]'),
 ('Footer navigation', 'footer', '[{"label":"Careers","url":"/careers.php"},{"label":"Privacy","url":"/privacy.php"},{"label":"Terms","url":"/terms.php"},{"label":"Returns","url":"/returns.php"}]');
 
 INSERT INTO pages (title, slug, excerpt, hero, sections, seo, status, sort_order) VALUES
@@ -201,6 +218,11 @@ INSERT INTO products (name, slug, description, price, sku, stock, status, featur
 ('Strategic Advisory Package', 'strategic-advisory-package', '<p>A six-week engagement to define your digital strategy, prioritize initiatives, and align your leadership team.</p>', 2499.00, 'SAP-001', 10, 'published', 1, '["images/product-placeholder.svg"]', '[{"name":"Executive workshop","price":699.00},{"name":"Leadership coaching","price":899.00}]'),
 ('Implementation Sprint', 'implementation-sprint', '<p>Cross-functional experts design, build, and launch a pilot in 30 days using agile delivery practices.</p>', 1299.00, 'IMS-002', 12, 'published', 1, '["images/product-placeholder.svg"]', '[]'),
 ('Customer Journey Mapping Lab', 'customer-journey-mapping-lab', '<p>Interactive workshops to uncover friction, illuminate opportunities, and prioritize service improvements.</p>', 1599.00, 'CJM-003', 8, 'published', 0, '["images/product-placeholder.svg"]', '[]');
+
+INSERT INTO portfolio (title, slug, category, description, thumbnail, images, video_url, client, link, featured, status, created_at) VALUES
+('Maine Service Blueprint Initiative', 'maine-service-blueprint', 'Public Sector', '<p>We partnered with statewide program leaders to align teams, capture citizen journeys, and deploy a responsive services portal in twelve weeks.</p>', 'portfolio-strategy.svg', '["portfolio-strategy.svg","portfolio-platform.svg"]', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 'State of Maine Digital Services', 'https://example.com/blueprint', 1, 'published', '2024-05-12 09:00:00'),
+('Pine Harbor Telehealth Launch', 'pine-harbor-telehealth-launch', 'Healthcare', '<p>Clinicians, designers, and engineers co-created a HIPAA-compliant telehealth experience that expanded access across rural communities.</p>', 'portfolio-lab.svg', '["portfolio-lab.svg","portfolio-strategy.svg"]', 'https://vimeo.com/76979871', 'Pine Harbor Health', 'https://example.com/telehealth', 1, 'published', '2024-04-04 10:30:00'),
+('Coastal Credit Experience Platform', 'coastal-credit-experience-platform', 'Financial Services', '<p>A modular design system, modern APIs, and personalized insights increased adoption and satisfaction for members statewide.</p>', 'portfolio-platform.svg', '["portfolio-platform.svg","portfolio-lab.svg"]', '', 'Coastal Credit Union', 'https://example.com/platform', 1, 'published', '2024-03-15 14:00:00');
 
 INSERT INTO testimonials (quote, author, role, status, sort_order) VALUES
 ('SOSHEMAIN gave our statewide program the clarity and momentum it needed to launch successfully.', 'Jordan Michaels', 'Director of Digital Services, Maine DHHS', 'published', 1),

@@ -9,6 +9,7 @@ class PageController
     private PostModel $posts;
     private TestimonialModel $testimonials;
     private StatModel $stats;
+    private PortfolioModel $portfolio;
 
     public function __construct()
     {
@@ -19,6 +20,7 @@ class PageController
         $this->posts = new PostModel();
         $this->testimonials = new TestimonialModel();
         $this->stats = new StatModel();
+        $this->portfolio = new PortfolioModel();
     }
 
     public function home(): void
@@ -34,10 +36,11 @@ class PageController
         $posts = $this->posts->recent();
         $testimonials = $this->testimonials->featured();
         $stats = $this->stats->all();
+        $portfolioProjects = $this->portfolio->featured();
 
         echo view('layouts/main', [
             'page' => $page,
-            'content' => view('pages/home', compact('page', 'services', 'products', 'posts', 'testimonials', 'stats')),
+            'content' => view('pages/home', compact('page', 'services', 'products', 'posts', 'testimonials', 'stats', 'portfolioProjects')),
             'title' => $page['title'] ?? APP_NAME,
         ]);
     }

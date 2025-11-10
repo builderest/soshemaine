@@ -1,14 +1,14 @@
 :root {
-  --color-primary: #0052ff;
-  --color-secondary: #0f172a;
-  --color-accent: #f97316;
+  --color-primary: #e91e63;
+  --color-secondary: #0b0f19;
+  --color-accent: #ff80ab;
   --color-success: #16a34a;
   --color-warning: #f59e0b;
   --color-danger: #dc2626;
-  --color-surface: #ffffff;
-  --color-surface-muted: #f3f4f6;
-  --color-text: #0f172a;
-  --color-text-muted: #64748b;
+  --color-surface: #0b0f19;
+  --color-surface-muted: #151b2d;
+  --color-text: #f8f9fa;
+  --color-text-muted: #b0b6c3;
   --font-family-base: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-family-heading: 'Inter', system-ui, sans-serif;
   --radius-sm: 0.5rem;
@@ -23,13 +23,23 @@
 }
 
 html[data-theme='dark'] {
-  --color-primary: #60a5fa;
-  --color-secondary: #111827;
-  --color-accent: #fbbf24;
-  --color-surface: #111827;
-  --color-surface-muted: #1f2937;
-  --color-text: #f9fafb;
-  --color-text-muted: #9ca3af;
+  --color-primary: #e91e63;
+  --color-secondary: #0b0f19;
+  --color-accent: #ff80ab;
+  --color-surface: #0b0f19;
+  --color-surface-muted: #151b2d;
+  --color-text: #f8f9fa;
+  --color-text-muted: #b0b6c3;
+}
+
+html[data-theme='light'] {
+  --color-primary: #0052ff;
+  --color-secondary: #0f172a;
+  --color-accent: #f97316;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f3f4f6;
+  --color-text: #0f172a;
+  --color-text-muted: #64748b;
 }
 
 html[data-theme='brand-ocean'] {

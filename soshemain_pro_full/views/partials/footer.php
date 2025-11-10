@@ -2,7 +2,7 @@
 $footerMenuItems = $footerMenu['items'] ?? [];
 $socialLinks = json_decode($settings['social_links'] ?? '[]', true) ?? [];
 ?>
-<footer class="site-footer mt-5 pt-5 bg-body-tertiary border-top">
+<footer class="site-footer mt-5 pt-5 border-top">
     <div class="container">
         <div class="row g-4">
             <div class="col-md-4">

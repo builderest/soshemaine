@@ -5,6 +5,7 @@ Auth::requireAuth();
 $view = $_GET['view'] ?? 'dashboard';
 $title = 'Dashboard';
 $data = [];
+$script = basename($_SERVER['SCRIPT_NAME'] ?? 'index.php');
 
 switch ($view) {
     case 'pages':
@@ -76,6 +77,21 @@ switch ($view) {
         }
         $data['items'] = $controller->all();
         break;
+    case 'portfolio':
+        $title = 'Portfolio';
+        $controller = new PortfolioManagerController();
+        if (is_post() && Csrf::verify()) {
+            if (isset($_POST['delete'])) {
+                $controller->remove((int) $_POST['delete']);
+                flash('admin_success', 'Project removed.');
+            } else {
+                $controller->save($_POST, $_FILES);
+                flash('admin_success', 'Project saved.');
+            }
+            redirect('admin/portfolio.php');
+        }
+        $data['items'] = $controller->all();
+        break;
     case 'menus':
         $title = 'Menus';
         $controller = new MenuManagerController();
@@ -141,8 +157,10 @@ switch ($view) {
 $success = flash('admin_success');
 $error = flash('admin_error');
 $user = Auth::user();
+$adminTheme = $GLOBALS['settings']['theme_default'] ?? 'dark';
+$adminBsTheme = $adminTheme === 'dark' ? 'dark' : 'light';
 ?><!DOCTYPE html>
-<html lang="en" data-theme="<?php echo e($GLOBALS['settings']['theme_default'] ?? 'light'); ?>">
+<html lang="en" data-theme="<?php echo e($adminTheme); ?>" data-bs-theme="<?php echo e($adminBsTheme); ?>">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -167,6 +185,7 @@ $user = Auth::user();
                 <li class="nav-item"><a class="nav-link<?php echo $view === 'posts' ? ' active' : ''; ?>" href="?view=posts">Posts</a></li>
                 <li class="nav-item"><a class="nav-link<?php echo $view === 'services' ? ' active' : ''; ?>" href="?view=services">Services</a></li>
                 <li class="nav-item"><a class="nav-link<?php echo $view === 'products' ? ' active' : ''; ?>" href="?view=products">Products</a></li>
+                <li class="nav-item"><a class="nav-link<?php echo $view === 'portfolio' || $script === 'portfolio.php' ? ' active' : ''; ?>" href="portfolio.php">Portfolio</a></li>
                 <li class="nav-item"><a class="nav-link<?php echo $view === 'menus' ? ' active' : ''; ?>" href="?view=menus">Menus</a></li>
                 <li class="nav-item"><a class="nav-link<?php echo $view === 'media' ? ' active' : ''; ?>" href="?view=media">Media</a></li>
                 <li class="nav-item"><a class="nav-link<?php echo $view === 'contacts' ? ' active' : ''; ?>" href="?view=contacts">Contacts</a></li>

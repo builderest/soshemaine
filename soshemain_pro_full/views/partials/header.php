@@ -2,16 +2,16 @@
 $primaryMenuItems = $primaryMenu['items'] ?? [];
 ?>
 <header class="site-header border-bottom">
-    <div class="bg-light text-dark small py-2">
+    <div class="bg-dark-subtle text-light small py-2">
         <div class="container d-flex flex-wrap justify-content-between align-items-center">
             <span><i class="bi bi-geo-alt me-2"></i><?php echo e($settings['company_address'] ?? 'Portland, Maine'); ?></span>
             <div class="d-flex gap-3">
-                <a href="tel:<?php echo e($settings['company_phone'] ?? '+1 555 123 4567'); ?>" class="text-decoration-none"><i class="bi bi-telephone me-1"></i><?php echo e($settings['company_phone'] ?? '+1 555 123 4567'); ?></a>
-                <a href="mailto:<?php echo e($settings['company_email'] ?? 'hello@example.com'); ?>" class="text-decoration-none"><i class="bi bi-envelope me-1"></i><?php echo e($settings['company_email'] ?? 'hello@example.com'); ?></a>
+                <a href="tel:<?php echo e($settings['company_phone'] ?? '+1 555 123 4567'); ?>" class="text-decoration-none text-light"><i class="bi bi-telephone me-1"></i><?php echo e($settings['company_phone'] ?? '+1 555 123 4567'); ?></a>
+                <a href="mailto:<?php echo e($settings['company_email'] ?? 'hello@example.com'); ?>" class="text-decoration-none text-light"><i class="bi bi-envelope me-1"></i><?php echo e($settings['company_email'] ?? 'hello@example.com'); ?></a>
             </div>
         </div>
     </div>
-    <nav class="navbar navbar-expand-lg bg-body">
+    <nav class="navbar navbar-expand-lg shadow-sm">
         <div class="container">
             <a class="navbar-brand fw-semibold" href="index.php"><?php echo e($settings['company_name'] ?? APP_NAME); ?></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,8 +26,8 @@ $primaryMenuItems = $primaryMenu['items'] ?? [];
                     <?php endforeach; ?>
                 </ul>
                 <div class="d-flex align-items-center gap-2 ms-lg-3">
-                    <a href="cart.php" class="btn btn-outline-primary btn-sm"><i class="bi bi-bag"></i> <span class="d-none d-md-inline">Cart</span></a>
-                    <button class="btn btn-sm btn-secondary" id="themeToggle" aria-label="Toggle theme"><i class="bi bi-moon-stars"></i></button>
+                    <a href="cart.php" class="btn btn-outline-light btn-sm"><i class="bi bi-bag"></i> <span class="d-none d-md-inline">Cart</span></a>
+                    <button class="btn btn-sm btn-primary" id="themeToggle" aria-label="Toggle theme"><i class="bi bi-moon-stars"></i></button>
                 </div>
             </div>
         </div>

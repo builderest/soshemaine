@@ -43,6 +43,39 @@ $sections = $page['sections'] ?? [];
         </div>
     </div>
 </section>
+<?php if (!empty($portfolioProjects)): ?>
+<section class="py-5 bg-body-tertiary">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+            <div>
+                <span class="badge bg-soft-primary text-primary rounded-pill">Portfolio</span>
+                <h2 class="display-6 fw-semibold mt-3 mb-0">Recent work in focus</h2>
+            </div>
+            <a href="portfolio.php" class="btn btn-outline-primary">View all projects</a>
+        </div>
+        <div class="row g-4">
+            <?php foreach ($portfolioProjects as $project): ?>
+                <div class="col-md-6 col-xl-3">
+                    <article class="card border-0 shadow-sm portfolio-card h-100">
+                        <?php $thumb = $project['thumbnail'] ?: ($project['images'][0] ?? ''); ?>
+                        <?php if ($thumb): ?>
+                            <div class="ratio ratio-4x3">
+                                <img src="<?php echo e(asset('uploads/' . $thumb)); ?>" alt="<?php echo e($project['title']); ?>" class="card-img-top object-fit-cover" loading="lazy" decoding="async">
+                            </div>
+                        <?php endif; ?>
+                        <div class="card-body">
+                            <span class="badge bg-dark text-uppercase mb-3">Featured</span>
+                            <h3 class="h5 mb-2"><a href="portfolio-item.php?slug=<?php echo e($project['slug']); ?>" class="stretched-link text-decoration-none"><?php echo e($project['title']); ?></a></h3>
+                            <p class="text-muted small mb-2"><?php echo e($project['category'] ?: 'Case study'); ?><?php if (!empty($project['client'])): ?> • <?php echo e($project['client']); ?><?php endif; ?></p>
+                            <p class="mb-0 text-muted"><?php echo e(mb_strimwidth(strip_tags((string) ($project['description'] ?? '')), 0, 120, '…')); ?></p>
+                        </div>
+                    </article>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
 <section class="py-5 bg-body-tertiary">
     <div class="container">
         <div class="row g-4">

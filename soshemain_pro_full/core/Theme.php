@@ -2,7 +2,7 @@
 
 class Theme
 {
-    private const DEFAULT_THEME = 'light';
+    private const DEFAULT_THEME = 'dark';
 
     public static function getDefault(): string
     {

@@ -2,10 +2,11 @@
 $settings = $GLOBALS['settings'] ?? [];
 $meta = $page['seo'] ?? [];
 $theme = $_COOKIE['soshemaine_theme'] ?? ($settings['theme_default'] ?? Theme::getDefault());
+$bootstrapTheme = $theme === 'dark' ? 'dark' : 'light';
 $primaryMenu = (new MenuModel())->findByLocation('primary');
 $footerMenu = (new MenuModel())->findByLocation('footer');
 ?><!DOCTYPE html>
-<html lang="en" data-theme="<?php echo e($theme); ?>">
+<html lang="en" data-theme="<?php echo e($theme); ?>" data-bs-theme="<?php echo e($bootstrapTheme); ?>">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
