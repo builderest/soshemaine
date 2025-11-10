@@ -1,0 +1,5 @@
+# Prevent committing generated ZIP archives in the public directory
+soshemain_v40_pro_full/public/*.zip
+soshemain_v40_pro_full/public/*.ZIP
+soshemain_v40_pro_full/public/**/*.zip
+soshemain_v40_pro_full/public/**/*.ZIP
