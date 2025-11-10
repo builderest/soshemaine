@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img" aria-label="About team illustration">
+  <rect width="600" height="400" rx="32" fill="#0f172a"/>
+  <circle cx="140" cy="200" r="70" fill="#38bdf8" opacity="0.7"/>
+  <circle cx="300" cy="200" r="90" fill="#a855f7" opacity="0.7"/>
+  <circle cx="460" cy="200" r="70" fill="#22d3ee" opacity="0.7"/>
+  <text x="50%" y="65%" fill="#fff" font-size="32" font-family="Arial" text-anchor="middle">People first</text>
+</svg>

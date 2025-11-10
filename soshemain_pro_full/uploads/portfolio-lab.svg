@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480">
+  <defs>
+    <linearGradient id="grad3" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0b0f19" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#ff80ab" stop-opacity="0.85"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="480" fill="#0b0f19"/>
+  <g transform="translate(120 80)">
+    <rect width="400" height="320" rx="40" fill="url(#grad3)"/>
+    <path d="M120 40h40l40 120 40-120h40l-60 180v60h-40v-60z" fill="#ffffff" opacity="0.25"/>
+    <circle cx="320" cy="220" r="36" fill="#ffffff" opacity="0.25"/>
+    <circle cx="200" cy="260" r="28" fill="#ffffff" opacity="0.25"/>
+  </g>
+  <text x="50%" y="90%" font-size="50" font-family="'Inter',sans-serif" text-anchor="middle" fill="#ffffff" opacity="0.85">Innovation Lab</text>
+</svg>
